@@ -7,19 +7,22 @@ using WebAPI.DTO;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public abstract class BaseController : ControllerBase
     {
-        protected User User()
+        protected User User
         {
-            var claims = HttpContext?.User.Claims;
-
-            var user = new User
+            get
             {
-                Email = claims.FirstOrDefault(c => c.Type == "Email")?.Value,
-            };
+                var claims = HttpContext?.User.Claims;
 
-            return user;
+                var user = new User
+                {
+                    Email = claims.FirstOrDefault(c => c.Type == "Email")?.Value,
+                };
+
+                return user;
+            }
         }
     }
 }

@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
         [HttpPost("FazerPedido")]
         public async Task<IActionResult> FazerPedido([FromBody] PedidoCreateDTO pedido)
         {
-            await servicoPedido.CriarPedido(pedido, User().Email);
+            await servicoPedido.CriarPedido(pedido, User.Email);
 
             return Ok(new Result { message = "Pedido criado com sucesso" });
         }

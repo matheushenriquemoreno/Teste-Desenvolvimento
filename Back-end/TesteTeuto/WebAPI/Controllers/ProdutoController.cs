@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> AdicionarProduto([FromBody] ProdutoDTO produtoDTO)
         {
 
-            var produto = await servicoProduto.Add(produtoDTO, User().Email);
+            var produto = await servicoProduto.Add(produtoDTO, User.Email);
             
             return Created(nameof(ObterPeloID), new { id = produto.Id });
         }
@@ -53,7 +53,7 @@ namespace WebAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> AlterarProduto([FromBody] ProdutoDTO produtoDTO)
         {
-            await servicoProduto.Atualizar(produtoDTO, User().Email);
+            await servicoProduto.Atualizar(produtoDTO, User.Email);
             
             return Ok();
         }
