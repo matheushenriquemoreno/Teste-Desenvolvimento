@@ -66,7 +66,7 @@ const LoginPage = () => {
                                         {errors.senha?.message}
                                     </div>
                                 </div>
-                                <Button loading={carregandoLogin} className="bg-dark" type="primary" htmlType="submit" size="large">Entrar</Button>
+                                <Button loading={carregandoLogin} className="bg-dark" type="primary" htmlType="submit" size="large">Logar</Button>
                             </form>
                         </div>
                         <div className="col-md-6 order-md-1">

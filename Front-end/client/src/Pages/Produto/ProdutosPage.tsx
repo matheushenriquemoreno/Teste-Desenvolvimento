@@ -86,7 +86,7 @@ const ProdutosPage = () => {
                                                    : <span className="badge bg-secondary">{obterStatus(produto.statusDoProduto)}</span>}
                                                 </td>
                                                 <td className="align-middle">
-                                                    <ButtonDropdown
+                                                    <ButtonDropdown key={produto.id!}
                                                         Campos={
                                                             [
                                                                 { classIcon: "bi bi-sliders", nome: "Editar", aoCliclar: () => { selecionarEdicao(produto.id!) } },

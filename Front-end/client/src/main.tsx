@@ -1,8 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
-import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ClientePage from './Pages/Cliente/ClientePage';
 import CadastroClientePage from './Pages/Cliente/CadastroClientePage';
@@ -14,6 +13,7 @@ import Auth from './Pages/Login/Auth';
 import App from './App';
 import Cadastro from './Pages/Login/Cadastro'
 import Compra from './Pages/Compra/CompraPage'
+
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter basename={''}>
