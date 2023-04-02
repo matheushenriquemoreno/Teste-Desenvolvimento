@@ -10,7 +10,7 @@ namespace WebAPI.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public abstract class BaseController : ControllerBase
     {
-        protected User User
+        protected new User User
         {
             get
             {
