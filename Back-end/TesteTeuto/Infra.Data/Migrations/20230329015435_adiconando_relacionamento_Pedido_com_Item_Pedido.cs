@@ -22,10 +22,6 @@ namespace Infra.Data.Migrations
                 name: "ProdutoId",
                 table: "Pedidos");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_ItemPedido_IdProduto",
-                table: "ItemPedido",
-                column: "IdProduto");
         }
 
         /// <inheritdoc />
