@@ -27,6 +27,11 @@ namespace LoginAPI.Controllers
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// criação de usuario para toda a aplicação
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost("CriarUsuario")]
         public async Task<ActionResult> CriarUsuario([FromBody] RegisterDTO model)
         {
@@ -41,6 +46,12 @@ namespace LoginAPI.Controllers
             return BadRequest(new { message = "Erro ao Logar usuario, Verifique suas Credencias " });
         }
 
+        /// <summary>
+        /// Efetua o login do usuario com base no email e senha.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <response code="200">Retorna o token caso o login seja efetuado com sucesso</response>
+        /// <response code="404">Erro ao logar usuario</response>
         [HttpPost("LogarUsuario")]
         public async Task<ActionResult<TokenUsuario>> LogarUsuario([FromBody] LoginDTO model)
         {
