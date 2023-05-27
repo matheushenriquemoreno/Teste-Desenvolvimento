@@ -1,14 +1,19 @@
 using System.Text;
+using Application.Interfaces;
 using Infra.IOC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using WebAPI.DTO;
 using WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddDependencias();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<IUser, UserAPP>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
            .AddJwtBearer(options =>
@@ -88,6 +93,7 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+app.UseMiddleware<BodyMiddleware>();
 app.UseMiddleware<ErrorMiddleware>();
 
 app.MapControllers();
