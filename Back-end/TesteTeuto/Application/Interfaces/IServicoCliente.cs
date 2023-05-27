@@ -9,7 +9,7 @@ namespace Application.Interfaces
 {
     public interface IServicoCliente
     {
-        Task<ClienteDTO> Add(ClienteDTO ClienteDTO, string emailUsuarioLogado);
+        Task<ClienteDTO> Add(ClienteDTO ClienteDTO);
         Task<ClienteDTO> ObterClientePeloID(int id);
         Task<IEnumerable<ClienteDTO>> ObterClientes();
         Task Remove(int id);

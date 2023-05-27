@@ -34,7 +34,7 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> AdicionarCliente([FromBody] ClienteDTO clienteDTO)
         {
-            var cliente = await servicoCliente.Add(clienteDTO, User.Email);
+            var cliente = await servicoCliente.Add(clienteDTO);
 
             return Created(nameof(ObterPeloID), new { id = cliente.Id });
         }

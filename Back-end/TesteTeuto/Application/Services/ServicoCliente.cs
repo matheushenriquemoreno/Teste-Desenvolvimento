@@ -15,21 +15,23 @@ namespace Application.Services
     public class ServicoCliente : IServicoCliente
     {
         public readonly IRepositorioCliente repositorioCliente;
+        private readonly IUser user;
         private readonly IMapper _mapper;
 
-        public ServicoCliente(IRepositorioCliente repositorioCliente, IMapper mapper)
+        public ServicoCliente(IRepositorioCliente repositorioCliente, IMapper mapper, IUser user)
         {
             this.repositorioCliente = repositorioCliente;
             _mapper = mapper;
+            this.user = user;
         }
 
-        public async Task<ClienteDTO> Add(ClienteDTO ClienteDTO, string emailUsuarioLogado)
+        public async Task<ClienteDTO> Add(ClienteDTO ClienteDTO)
         {
             var endereco = new Endereco(ClienteDTO.Endereco.Rua,ClienteDTO.Endereco.Bairro, ClienteDTO.Endereco.Cidade, ClienteDTO.Endereco.Estado, ClienteDTO.Endereco.CEP, ClienteDTO.Endereco.Complemento);
 
             var cliente = new Cliente(ClienteDTO.Nome, ClienteDTO.ClienteStatus, endereco);
 
-            cliente.RegistrarAuditoriaCriacao(emailUsuarioLogado);
+            cliente.RegistrarAuditoriaCriacao(user.Email);
 
             await repositorioCliente.Adicionar(cliente);
 
